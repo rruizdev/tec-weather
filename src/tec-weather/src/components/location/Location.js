@@ -7,9 +7,13 @@ function Location() {
         return React.useMemo(() => new URLSearchParams(search), [search]);
     }
 
-    let query = useQuery();
+    let name = useQuery().get("name");
 
-    return('<p>Forecast for ' + query.get("name") + '</p>');
+    if (!name || !name.length) {
+        window.location.href = '/home';
+    }
+        
+    return('<p>Forecast for ' + name + '</p>'); 
 }
 
 export default Location;
