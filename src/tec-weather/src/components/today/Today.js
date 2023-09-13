@@ -1,5 +1,5 @@
 function Today() {
-    return('<p>Today forecast</p>');
+    return('');
 }
 
 export default Today;
