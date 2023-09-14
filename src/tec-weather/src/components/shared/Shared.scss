@@ -1,4 +1,11 @@
 div {
+    text-align: center;
+    p {
+        margin: 0;
+        &.description {
+            font-size: 1.5em;
+        }
+    }
     &.icon, &.numbers {
         display: inline-block;
         vertical-align: middle;
@@ -13,7 +20,7 @@ div {
     }
     &.numbers {
         width: calc(100% - 36px);
-        text-align: left;
+        text-align: center;
         p {
             &.featured {
                 font-size: 1.5em;
