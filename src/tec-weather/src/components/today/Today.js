@@ -7,31 +7,22 @@ import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
 import { ArrowDownSquare, ArrowUpSquare, CloudSun, EyeFill, Moisture, ThermometerHalf, Wind } from 'react-bootstrap-icons';
 import './Today.scss';
+import SingleRegistry from '../shared/SingleRegistry';
+import DoubleRegistry from '../shared/DoubleRegistry';
 
-function Today() {
-    const [coordinates, setCoordinates] = useState(null);
+function Today(data) {
     const [weather, setWeather] = useState(null);
 
     useEffect(() => {
-        navigator.geolocation.getCurrentPosition((position => {
-            setCoordinates({
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude
-            });
-        }));
-    }, []);
-
-    useEffect(() => {
-        if (coordinates != null) {
-            getTodayBy(coordinates.latitude, coordinates.longitude).then(response => {
-                setWeather(response.data);
-            }).catch();
-        }
-    }, [coordinates]);
+        getTodayBy(data.latitude, data.longitude).then(response => {
+            setWeather(response.data);
+        }).catch(() => {
+        });
+    }, [data]);
 
     const memoizedWeather = useMemo(() => weather, [weather]);
 
-    return (
+    return (memoizedWeather != null ?
         <Container>
             <Row className='p-2'></Row>
             <Row>
@@ -45,82 +36,30 @@ function Today() {
                     </div>
                 </Col>
                 <Col className='conditions' xs={6} md={4}>
-                    <div className='p-2'>
-                        <div className='icon'>
-                            <ThermometerHalf size={32} />
-                        </div>
-                        <div className='numbers'>
-                            <p className='featured'>
-                                <span>{memoizedWeather?.main.temp.toFixed(1) || ''}º</span>
-                                <span className='label'>Temperatura</span>
-                            </p>
-                            <p className='common'>
-                                <span>{memoizedWeather?.main.feels_like.toFixed(1) || ''}º</span>
-                                <span className='label'>S. Térmica</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div className='p-2'>
-                        <div className='icon'>
-                            <ArrowUpSquare size={18} />
-                        </div>
-                        <div className='numbers'>
-                            <p className='common'>
-                                <span>{memoizedWeather ? getTime(memoizedWeather.sys.sunrise) : ''}</span>
-                                <span className='label'>Salida del sol</span>
-                            </p>
-                        </div>
-                        <div className='icon'>
-                            <ArrowDownSquare size={18} />
-                        </div>
-                        <div className='numbers'>
-                            <p className='common'>
-                                <span>{memoizedWeather ? getTime(memoizedWeather.sys.sunset) : ''}</span>
-                                <span className='label'>Puesta del sol</span>
-                            </p>
-                        </div>
-                    </div>
+                    <DoubleRegistry values={[(memoizedWeather?.main.temp.toFixed(1) || '') + '°', (memoizedWeather?.main.feels_like.toFixed(1) || '') + '°']} labels={['Temperatura', 'S. Térmica']}>
+                        <ThermometerHalf size={32} />
+                    </DoubleRegistry>
+                    <SingleRegistry value={memoizedWeather ? getTime(memoizedWeather.sys.sunrise) : ''} label={'Salida del sol'}>
+                        <ArrowUpSquare size={18} />
+                    </SingleRegistry>
+                    <SingleRegistry value={memoizedWeather ? getTime(memoizedWeather.sys.sunset) : ''} label={'Puesta del sol'}>
+                        <ArrowDownSquare size={18} />
+                    </SingleRegistry>
                 </Col>
                 <Col className='conditions' xs={6} md={4}>
-                    <div className='p-2'>
-                        <div className='icon head'>
-                            <Moisture size={18} />
-                        </div>
-                        <div className='numbers'>
-                            <p className='featured'>
-                                <span>{memoizedWeather?.main.humidity || ''}%</span>
-                                <span className='label'>Humedad</span>
-                            </p>
-                            <p className='common'>
-                                <span>{memoizedWeather?.main.pressure || ''} hPa</span>
-                                <span className='label'>Presión</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div className='p-2'>
-                        <div className='icon'>
-                            <Wind size={18} />
-                        </div>
-                        <div className='numbers'>
-                            <p className='common'>
-                                <span>{memoizedWeather ? getOrientation(memoizedWeather.wind.deg) : ''} {memoizedWeather ? (memoizedWeather.wind.speed * 3.6).toFixed(1) : ''} km/h</span>
-                                <span className='label'>Viento</span>
-                            </p>
-                        </div>
-                        <div className='icon'>
-                            <EyeFill size={18} />
-                        </div>
-                        <div className='numbers'>
-                            <p className='common'>
-                                <span>{memoizedWeather ? (memoizedWeather.visibility / 1000) : ''} km.</span>
-                                <span className='label'>Visibilidad</span>
-                            </p>
-                        </div>
-                    </div>
+                    <DoubleRegistry values={[(memoizedWeather?.main.humidity || '') + '%', (memoizedWeather?.main.pressure || '') + ' hPa']} labels={['Humedad', 'Presión']}>
+                        <Moisture size={18} />
+                    </DoubleRegistry>
+                    <SingleRegistry value={(memoizedWeather ? getOrientation(memoizedWeather.wind.deg) : '') + ' ' + (memoizedWeather ? (memoizedWeather.wind.speed * 3.6).toFixed(1) : '') + ' km/h'} label={'Viento'}>
+                        <Wind size={18} />
+                    </SingleRegistry>
+                    <SingleRegistry value={(memoizedWeather ? (memoizedWeather.visibility / 1000) : '') + ' km'} label={'Visibilidad'}>
+                        <EyeFill size={18} />
+                    </SingleRegistry>
                 </Col>
             </Row>
         </Container>
-    );
+        : '');
 }
 
 export default Today;

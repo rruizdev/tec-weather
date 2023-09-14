@@ -1,8 +1,12 @@
 import axios from 'axios';
 import environment from '../configurations/environment.json';
 
-export async function getTodayBy(latitud, longitud) {
-  return axios.get(environment.weather.endpoints.today + `?lat=${latitud}&lon=${longitud}&appid=${environment.weather.api_key}&units=metric&lang=es`);
+export async function getTodayBy(latitude, longitude) {
+  return axios.get(environment.weather.endpoints.today + `?lat=${latitude}&lon=${longitude}&appid=${environment.weather.api_key}&units=metric&lang=es`);
+}
+
+export async function getExtendedBy(latitude, longitude) {
+  return axios.get(environment.weather.endpoints.extended + `?lat=${latitude}&lon=${longitude}&appid=${environment.weather.api_key}&units=metric&lang=es`);
 }
 
 export function getOrientation(degrees) {

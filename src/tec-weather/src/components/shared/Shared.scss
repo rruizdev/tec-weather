@@ -1,0 +1,31 @@
+div {
+    &.icon, &.numbers {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    &.icon {
+        width: 36px;
+        text-align: center;
+        &.head {
+            vertical-align: top;
+            margin-top: 4px;
+        }
+    }
+    &.numbers {
+        width: calc(100% - 36px);
+        text-align: left;
+        p {
+            &.featured {
+                font-size: 1.5em;
+            }
+            &.common {
+                font-size: 1.25em;
+            }
+            span.label {
+                opacity: 0.5;
+                font-size: 0.75rem;
+                margin-left: 8px;
+            }
+        }
+    }
+}

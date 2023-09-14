@@ -1,7 +1,8 @@
 {
     "weather": {
         "endpoints": {
-            "today": "https://api.openweathermap.org/data/2.5/weather"
+            "today": "https://api.openweathermap.org/data/2.5/weather",
+            "extended": "https://api.openweathermap.org/data/2.5/forecast"
         },
         "api_key": ""
     }
