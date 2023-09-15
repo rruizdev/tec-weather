@@ -11,7 +11,7 @@ div {
         vertical-align: middle;
     }
     &.icon {
-        width: 36px;
+        min-width: 36px;
         text-align: center;
         &.head {
             vertical-align: top;
@@ -19,7 +19,7 @@ div {
         }
     }
     &.numbers {
-        width: calc(100% - 36px);
+        max-width: calc(100% - 36px);
         text-align: center;
         p {
             &.featured {

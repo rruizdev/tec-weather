@@ -1,7 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { getTodayBy, getOrientation } from '../../services/WeatherService';
-import { capitalize } from '../../utilities/StringUtilities';
-import { getTime } from '../../utilities/TimeUtilities';
+import { getTime } from '../../services/TimeService';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
@@ -10,7 +9,11 @@ import SingleRegistry from '../shared/SingleRegistry';
 import DoubleRegistry from '../shared/DoubleRegistry';
 import BigIconRegistry from '../shared/BigIconRegistry';
 
-function Today(data) {
+function capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+export default function Today(data) {
     const [weather, setWeather] = useState(null);
 
     useEffect(() => {
@@ -24,7 +27,7 @@ function Today(data) {
 
     return (memoizedWeather != null ?
         <Container>
-            <BigIconRegistry title={'Datos actualizados del tiempo'} />
+            <BigIconRegistry title={'Datos actuales'} />
             <Row className='p-2'>
                 <Col className='conditions' xs={12} md={4}>
                     <BigIconRegistry
@@ -70,5 +73,3 @@ function Today(data) {
         </Container>
         : '');
 }
-
-export default Today;
