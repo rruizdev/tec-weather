@@ -25,7 +25,7 @@ export default function BigIconRegistry(data) {
     return (
         <>
             <div className='p-2'>
-                {weatherIcons[data.icon]}
+                {data.icon?.length ? weatherIcons[data.icon] : data.children}
             </div>
             <div className='p-2'>
                 <p className='description'>{data.title}</p>
