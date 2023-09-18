@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button';
 function Header() {
     const navigate = useNavigate();
   
-    function getForecast(event) {  
+    function searchForecast(event) {  
       event.preventDefault();
   
       let location = event.target[0].value;
@@ -25,7 +25,7 @@ function Header() {
                 <Nav className="me-auto">
                 <Nav.Link href="/today">Hoy</Nav.Link>
                 <Nav.Link href="/extended">Extendido</Nav.Link>
-                <Form className="d-flex" onSubmit={ getForecast }>
+                <Form className="d-flex" onSubmit={ searchForecast }>
                     <Form.Control type="search" placeholder="Localidad" className="me-2" aria-label="Localidad" />
                     <Button variant="outline-success" type="submit">Buscar</Button>
                 </Form>

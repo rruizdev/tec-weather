@@ -3,7 +3,14 @@
         "endpoints": {
             "today": "https://api.openweathermap.org/data/2.5/weather",
             "extended": "https://api.openweathermap.org/data/2.5/forecast"
-        },
-        "api_key": ""
+        }
+    },
+    "location": {
+        "endpoints": {
+            "geocoding": "http://api.openweathermap.org/geo/1.0/direct"
+        }
+    },
+    "key": {
+        "openweathermap": ""
     }
 }

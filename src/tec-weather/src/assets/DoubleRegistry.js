@@ -1,4 +1,4 @@
-import './Shared.scss';
+import './Common.scss';
 
 export default function DoubleRegistry(data) {
     return (

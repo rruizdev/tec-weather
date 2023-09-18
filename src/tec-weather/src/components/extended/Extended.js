@@ -3,9 +3,9 @@ import { getExtendedBy } from '../../services/WeatherService';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
-import BigIconRegistry from '../shared/BigIconRegistry';
-import { getDayWithDate } from '../../services/TimeService';
-import DoubleRegistry from '../shared/DoubleRegistry';
+import BigIconRegistry from '../../assets/BigIconRegistry';
+import { getDayWithDate } from '../../utils/TimeUtils';
+import DoubleRegistry from '../../assets/DoubleRegistry';
 import { ThermometerHalf } from 'react-bootstrap-icons';
 
 export default function Extended(data) {

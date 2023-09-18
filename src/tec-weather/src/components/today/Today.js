@@ -1,13 +1,14 @@
 import { useState, useEffect, useMemo } from 'react';
-import { getTodayBy, getOrientation } from '../../services/WeatherService';
-import { getTime } from '../../services/TimeService';
+import { getOrientation } from '../../utils/WeatherUtils';
+import { getTodayBy } from '../../services/WeatherService';
+import { getTime } from '../../utils/TimeUtils';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
 import { BrightnessAltHigh, BrightnessAltHighFill, EyeFill, Moisture, ThermometerHalf, Wind } from 'react-bootstrap-icons';
-import SingleRegistry from '../shared/SingleRegistry';
-import DoubleRegistry from '../shared/DoubleRegistry';
-import BigIconRegistry from '../shared/BigIconRegistry';
+import SingleRegistry from '../../assets/SingleRegistry';
+import DoubleRegistry from '../../assets/DoubleRegistry';
+import BigIconRegistry from '../../assets/BigIconRegistry';
 
 function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
