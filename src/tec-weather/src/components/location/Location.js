@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { getLocation } from "../../services/LocationService";
 import Today from "../today/Today";
 import Extended from "../extended/Extended";
@@ -22,8 +22,8 @@ function Location() {
 
     return (
         <>
-            <Today latitude={location?.lat} longitude={location?.lon} />
-            <Extended latitude={location?.lat} longitude={location?.lon} />
+            <Today city={location?.name} latitude={location?.lat} longitude={location?.lon} />
+            <Extended city={location?.name} latitude={location?.lat} longitude={location?.lon} />
         </>
     );
 }

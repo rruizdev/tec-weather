@@ -45,7 +45,7 @@ export default function Extended(data) {
     return (
         <Container>
             <BigIconRegistry
-                title={memoizedWeather?.city.name || ''}
+                title={data.city ? data.city : (memoizedWeather?.city.name || '')}
                 subtitle={'Pronóstico extendido'}>
             </BigIconRegistry>
             <Row className='p-2'>

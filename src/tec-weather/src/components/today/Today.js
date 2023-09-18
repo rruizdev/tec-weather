@@ -34,7 +34,7 @@ export default function Today(data) {
                     <BigIconRegistry
                         icon={memoizedWeather?.weather[0].icon || ''}
                         title={capitalize(memoizedWeather?.weather[0].description || '')}
-                        subtitle={memoizedWeather?.name || ''} />
+                        subtitle={data.city ? data.city : (memoizedWeather?.name || '')} />
                 </Col>
                 <Col className='conditions' xs={12} sm={6} md={4}>
                     <DoubleRegistry
