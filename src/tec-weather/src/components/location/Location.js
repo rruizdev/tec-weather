@@ -1,20 +1,31 @@
 import { useLocation } from "react-router-dom";
 import { useState, useEffect, useMemo } from 'react';
+import { getLocation } from "../../services/LocationService";
+import Today from "../today/Today";
+import Extended from "../extended/Extended";
 
 function Location() {
     const query = new URLSearchParams(useLocation().search).get('name');
     const [location, setLocation] = useState(null);
-    const [weather, setWeather] = useState(null);
-    const [forecast, setForecast] = useState(null);
 
-
-    if (query?.length) {
-        // Reutilize current and extended conditions
-    } else {
+    if (!query?.length) {
         window.location.href = '/home';
     }
-        
-    return('<p>Forecast for ' + query + '</p>'); 
+
+    useEffect(() => {
+        getLocation(query).then(response => {
+            setLocation(response.data[0]);
+        }).catch(() => {
+
+        });
+    }, [location, query]);
+
+    return (
+        <>
+            <Today latitude={location?.lat} longitude={location?.lon} />
+            <Extended latitude={location?.lat} longitude={location?.lon} />
+        </>
+    );
 }
 
 export default Location;

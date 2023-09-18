@@ -6,7 +6,7 @@ export async function getTodayBy(latitude, longitude) {
     params: {
       lat: latitude,
       lon: longitude,
-      appid: environment.key.openweathermap,
+      appid: environment.key.openWeatherMap,
       units: 'metric',
       lang: 'es'
     }
@@ -18,7 +18,7 @@ export async function getExtendedBy(latitude, longitude) {
     params: {
       lat: latitude,
       lon: longitude,
-      appid: environment.key.openweathermap,
+      appid: environment.key.openWeatherMap,
       units: 'metric',
       lang: 'es'
     }
