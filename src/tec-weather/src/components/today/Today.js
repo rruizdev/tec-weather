@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { getOrientation } from '../../utils/WeatherUtils';
 import { getTodayBy } from '../../services/WeatherService';
-import { getTime } from '../../utils/TimeUtils';
+import { getTime } from '../../utils/DateUtils';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
@@ -34,7 +34,7 @@ export default function Today(data) {
                     <BigIconRegistry
                         icon={memoizedWeather?.weather[0].icon || ''}
                         title={capitalize(memoizedWeather?.weather[0].description || '')}
-                        subtitle={data.city ? data.city : (memoizedWeather?.name || '')} />
+                        subtitle={data.city?.length ? data.city : (memoizedWeather?.name || '')} />
                 </Col>
                 <Col className='conditions' xs={12} sm={6} md={4}>
                     <DoubleRegistry
