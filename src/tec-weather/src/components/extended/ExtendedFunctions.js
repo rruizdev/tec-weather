@@ -39,9 +39,6 @@ export function parseForecasts(weather) {
 
         position++;
     }
-    console.log(parsedForecasts);
+
     return parsedForecasts;
-    // verificar si hay al menos 4 registros del mismo dia.
-    // si hay, informar. sino, descartar hasta encontrar siguiente.
-    // tomar desde ahi como minimo 4 registros hasta el final. 
 }

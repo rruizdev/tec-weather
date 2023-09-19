@@ -14,9 +14,11 @@ export default function Extended(data) {
     const [forecasts, setForecasts] = useState(null);
 
     useEffect(() => {
-        getExtendedBy(data.latitude, data.longitude).then(response => {
-            setWeather(response.data);
-        });
+        if (data?.latitude && data?.longitude) {
+            getExtendedBy(data.latitude, data.longitude).then(response => {
+                setWeather(response.data);
+            });
+        }
     }, [data]);
 
     const memoizedWeather = useMemo(() => weather, [weather]);
