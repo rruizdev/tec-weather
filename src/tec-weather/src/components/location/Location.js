@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useState, useEffect, useMemo } from 'react';
-import { getLocation } from "../../services/LocationService";
+import { getLocation } from "../../services/Location";
 import Today from "../today/Today";
 import Extended from "../extended/Extended";
 

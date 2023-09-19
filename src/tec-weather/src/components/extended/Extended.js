@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { getExtendedBy } from '../../services/WeatherService';
+import { getExtendedBy } from '../../services/Weather';
 import Container from 'react-bootstrap/esm/Container';
 import BigIconRegistry from '../../assets/BigIconRegistry';
 import Row from 'react-bootstrap/esm/Row';

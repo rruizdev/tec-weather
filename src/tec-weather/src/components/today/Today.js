@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { getTodayBy } from '../../services/WeatherService';
+import { getTodayBy } from '../../services/Weather';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
