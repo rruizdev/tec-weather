@@ -40,12 +40,12 @@ export default function Today(data) {
                         <ThermometerHalf size={18} />
                     </DoubleRegistry>
                     <SingleRegistry
-                        value={memoizedWeather ? moment.unix(memoizedWeather.sys.sunrise).format('HH:mm') : ''}
+                        value={memoizedWeather ? moment.unix(memoizedWeather.sys.sunrise).utcOffset(memoizedWeather.timezone / 3600).format('HH:mm') : ''}
                         label={'Salida del sol'}>
                         <BrightnessAltHighFill size={18} />
                     </SingleRegistry>
                     <SingleRegistry
-                        value={memoizedWeather ? moment.unix(memoizedWeather.sys.sunset).format('HH:mm') : ''}
+                        value={memoizedWeather ? moment.unix(memoizedWeather.sys.sunset).utcOffset(memoizedWeather.timezone / 3600).format('HH:mm') : ''}
                         label={'Puesta del sol'}>
                         <BrightnessAltHigh size={18} />
                     </SingleRegistry>

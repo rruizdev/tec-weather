@@ -26,7 +26,7 @@ export default function App() {
           <Route>
             <Route path="today" element={ <Today latitude={latitude} longitude={longitude} /> } />
             <Route path="extended" element={ <Extended latitude={latitude} longitude={longitude} /> } />
-            <Route path="location" element={ <Location /> } />
+            <Route path="locations" element={ <Location /> } />
             <Route path='*' element={ <Navigate to="/today" /> } />
           </Route>
         </Routes>
