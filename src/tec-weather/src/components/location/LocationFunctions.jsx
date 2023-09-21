@@ -2,7 +2,7 @@ import { Nav, Tab } from "react-bootstrap";
 import Today from "../today/Today";
 import Extended from "../extended/Extended";
 
-export const createNewTab = (data) => ({
+export const possibleTab = (data) => ({
     city: `${data.name}${data.state ? `, ${data.state}` : ''}`,
     latitude: data.lat,
     longitude: data.lon

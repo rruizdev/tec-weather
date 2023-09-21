@@ -5,7 +5,7 @@ export const getLocation = async (query) => {
     return axios.get(environment.location.endpoints.geocoding, {
         params: {
             q: query,
-            limit: 1,
+            limit: 5,
             appid: environment.key.openWeatherMap
         }
     });
