@@ -24,10 +24,10 @@ export default function App() {
       <Container>
         <Routes>
           <Route>
-            <Route path="today" element={ <Today latitude={latitude} longitude={longitude} /> } />
-            <Route path="extended" element={ <Extended latitude={latitude} longitude={longitude} /> } />
-            <Route path="locations" element={ <Location /> } />
-            <Route path='*' element={ <Navigate to="/today" /> } />
+            <Route path={'today'} element={ <Today latitude={latitude} longitude={longitude} /> } />
+            <Route path={'extended'} element={ <Extended latitude={latitude} longitude={longitude} /> } />
+            <Route path={'locations'} element={ <Location /> } />
+            <Route path={'*'} element={ <Navigate to={'/today'} /> } />
           </Route>
         </Routes>
       </Container>

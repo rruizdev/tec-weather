@@ -1,9 +1,9 @@
-import { Nav, Tab } from "react-bootstrap";
+import { ListGroup, Nav, Tab } from "react-bootstrap";
 import Today from "../today/Today";
 import Extended from "../extended/Extended";
 
 export const possibleTab = (data) => ({
-    city: `${data.name}${data.state ? `, ${data.state}` : ''}`,
+    city: `${data.local_names?.es ?? data.name}${data.state ? `, ${data.state}` : ''}`,
     latitude: data.lat,
     longitude: data.lon
 });
@@ -21,4 +21,12 @@ export const renderTab = (tab, i) => tab ?
         <Today city={tab.city} latitude={tab.latitude} longitude={tab.longitude} />
         <Extended city={tab.city} latitude={tab.latitude} longitude={tab.longitude} />
     </Tab.Pane>
+    : <></>;
+
+export const renderAutocomplete = (result, i, action) => result ?
+    <ListGroup.Item
+        eventKey={i}
+        onClick={action}>
+        {result.city}
+    </ListGroup.Item>
     : <></>;

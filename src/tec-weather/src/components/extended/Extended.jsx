@@ -37,7 +37,7 @@ export default function Extended(data) {
                 title={data.city?.length ? 'Pronóstico extendido' : (memoizedWeather?.city.name || '')}
                 subtitle={data.city?.length ? '' : 'Pronóstico extendido'}>
             </BigIconRegistry>
-            <Row className='p-2'>
+            <Row className={'p-2'}>
                 {
                     memoizedForecasts?.map((forecast => {
                         let forecastRegistry = <></>
@@ -65,7 +65,7 @@ export default function Extended(data) {
                         };
 
                         return (
-                            <Col xs={12} md={6} lg={4} xl={3} className='p-2'>
+                            <Col xs={12} md={6} lg={4} xl={3} className={'p-2'}>
                                 <BigIconRegistry
                                     icon={forecast.icon}
                                     subtitle={forecast.date} />

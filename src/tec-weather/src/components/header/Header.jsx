@@ -4,15 +4,15 @@ import Navbar from 'react-bootstrap/Navbar';
 
 export default function Header() {
     return (
-        <Navbar expand="lg" className="bg-body-tertiary">
+        <Navbar expand={'lg'} className={'bg-body-tertiary'}>
             <Container>
-                <Navbar.Brand href="/today">Pronóstico</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
-                        <Nav.Link href="/today">Hoy</Nav.Link>
-                        <Nav.Link href="/extended">Extendido</Nav.Link>
-                        <Nav.Link href="/locations">Localidades</Nav.Link>
+                <Navbar.Brand href={'/today'}>Pronóstico</Navbar.Brand>
+                <Navbar.Toggle aria-controls={'basic-navbar-nav'} />
+                <Navbar.Collapse id={'basic-navbar-nav'}>
+                    <Nav className={'me-auto'}>
+                        <Nav.Link href={'/today'}>Hoy</Nav.Link>
+                        <Nav.Link href={'/extended'}>Extendido</Nav.Link>
+                        <Nav.Link href={'/locations'}>Localidades</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

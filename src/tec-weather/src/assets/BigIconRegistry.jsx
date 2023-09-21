@@ -24,11 +24,11 @@ const weatherIcons = {
 export default function BigIconRegistry(data) {
     return (
         <>
-            <div className='p-2'>
+            <div className={'p-2'}>
                 {data.icon?.length ? weatherIcons[data.icon] : data.children}
             </div>
-            <div className='p-2'>
-                <p className='description'>{data.title}</p>
+            <div className={'p-2'}>
+                <p className={'description'}>{data.title}</p>
                 <p>{data.subtitle}</p>
             </div>
         </>

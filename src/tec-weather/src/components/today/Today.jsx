@@ -26,14 +26,14 @@ export default function Today(data) {
     return (memoizedWeather != null ?
         <Container>
             <BigIconRegistry title={'Datos actuales'} />
-            <Row className='p-2'>
-                <Col className='conditions' xs={12} md={4}>
+            <Row className={'p-2'}>
+                <Col className={'conditions'} xs={12} md={4}>
                     <BigIconRegistry
                         icon={memoizedWeather?.weather[0].icon || ''}
                         title={capitalize(memoizedWeather?.weather[0].description || '')}
                         subtitle={data.city?.length ? data.city : (memoizedWeather?.name || '')} />
                 </Col>
-                <Col className='conditions' xs={12} sm={6} md={4}>
+                <Col className={'conditions'} xs={12} sm={6} md={4}>
                     <DoubleRegistry
                         values={[`${memoizedWeather?.main.temp.toFixed(1) || ''}°`, `${memoizedWeather?.main.feels_like.toFixed(1) || ''}°`]}
                         labels={['Temperatura', 'S. Térmica']}>
@@ -50,7 +50,7 @@ export default function Today(data) {
                         <BrightnessAltHigh size={18} />
                     </SingleRegistry>
                 </Col>
-                <Col className='conditions' xs={12} sm={6} md={4}>
+                <Col className={'conditions'} xs={12} sm={6} md={4}>
                     <DoubleRegistry
                         values={[`${memoizedWeather?.main.humidity || ''}%`, `${memoizedWeather?.main.pressure || ''} hPa`]}
                         labels={['Humedad', 'Presión']}>
