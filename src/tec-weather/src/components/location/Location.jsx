@@ -1,9 +1,12 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
 import { CloseButton, Col, Container, FloatingLabel, Form, FormGroup, ListGroup, Nav, Row, Spinner, Tab } from "react-bootstrap";
-import { possibleTab, renderAutocomplete, renderItem, renderTab } from './LocationFunctions';
+import { possibleTab } from './LocationFunctions';
 import { getLocation } from '../../services/Location';
 import './Location.scss'
 import { debounce } from 'lodash';
+import LocationTab from './LocationTab';
+import LocationAutoComplete from './LocationAutoComplete';
+import LocationItem from './LocationItem';
 
 export default function Location() {
     const maximumTabs = 5, minimumCharacters = 4;
@@ -66,7 +69,7 @@ export default function Location() {
                     <Spinner animation="grow" />
                     Cargando...
                 </ListGroup.Item>
-                {memoizedResults?.map((result, i) => renderAutocomplete(result, i, () => submitLocation(result)))}
+                {memoizedResults?.map((result, i) => <LocationAutoComplete result={result} i={i} action={() => submitLocation(result)} />)}
             </ListGroup>
             <Row className={'p-3'}></Row>
             <Tab.Container>
@@ -76,14 +79,17 @@ export default function Location() {
                             variant={'pills'}
                             className={'flex-column'}
                             activeKey={memoizedIndex} onSelect={i => setIndex(i)}>
-                            {memoizedTabs?.map((tab, i) => renderItem(tab, i, <CloseButton onClick={() => deleteTab(i)} />))}
+                            {memoizedTabs?.map((tab, i) =>
+                                <LocationItem tab={tab} i={i}>
+                                    <CloseButton onClick={() => deleteTab(i)} />
+                                </LocationItem>)}
                         </Nav>
                     </Col>
                     <Col className={'p-3'} xs={12} lg={8}>
                         {
                             memoizedTabs?.length ?
                                 <Tab.Content>
-                                    {memoizedTabs?.map(renderTab)}
+                                    {memoizedTabs?.map((tab, i) => <LocationTab tab={tab} i={i} />)}
                                 </Tab.Content> : <></>
                         }
                     </Col>
