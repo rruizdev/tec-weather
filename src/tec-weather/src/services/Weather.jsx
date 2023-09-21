@@ -1,7 +1,7 @@
 import axios from 'axios';
 import environment from '../configurations/environment.json';
 
-export async function getTodayBy(latitude, longitude) {
+export const getTodayBy = async (latitude, longitude) => {
   return axios.get(environment.weather.endpoints.today, {
     params: {
       lat: latitude,
@@ -13,7 +13,7 @@ export async function getTodayBy(latitude, longitude) {
   });
 }
 
-export async function getExtendedBy(latitude, longitude) {
+export const getExtendedBy = async (latitude, longitude) => {
   return axios.get(environment.weather.endpoints.extended, {
     params: {
       lat: latitude,

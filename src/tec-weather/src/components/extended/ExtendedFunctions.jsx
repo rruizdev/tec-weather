@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-export function parseForecasts(weather) {
+export const parseForecasts = (weather) => {
     let forecastsByDate = {};
     weather.list.forEach((forecast, i) => {
         let keyDate = moment.unix(forecast.dt).format('YYYYMMDD');

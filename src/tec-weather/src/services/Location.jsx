@@ -1,7 +1,7 @@
 import axios from 'axios';
 import environment from '../configurations/environment.json';
 
-export async function getLocation(query) {
+export const getLocation = async (query) => {
     return axios.get(environment.location.endpoints.geocoding, {
         params: {
             q: query,
