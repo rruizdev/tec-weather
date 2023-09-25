@@ -1,12 +1,16 @@
-$text-color: #000;
-$border-color: #dee2e6;
+$text-color-light: #000;
+$border-color-light: #dee2e6;
 $light-background: #f1f1f1;
+
+$text-color-dark: #dee2e6;
+$border-color-dark: #495057;
+$dark-background: #303539;
 
 div {
     &.nav-item {
         a {
             &.nav-link {
-                color: $text-color;
+                color: $text-color-light;
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -15,8 +19,8 @@ div {
 
                 &.active {
                     background-color: $light-background;
-                    color: $text-color;
-                    border: 1px solid $border-color;
+                    color: $text-color-light;
+                    border: 1px solid $border-color-light;
                 }
 
                 button.btn-close {
@@ -26,34 +30,76 @@ div {
             }
         }
     }
+
     &.tab-content {
-        border: 1px solid $border-color;
+        border: 1px solid $border-color-light;
         border-radius: 8px;
     }
+
     &.list-group {
         width: fit-content;
         margin-left: 12px;
-        border: 1px solid $border-color;
+        border: 1px solid $border-color-light;
         border-top: 0;
         border-radius: 4px;
+
         div.list-group-item {
             border-bottom: 0;
             text-align: left;
+
             &.disabled {
                 border: 0 !important;
             }
-            &.active, &:hover {
+
+            &.active,
+            &:hover {
                 border-top: 0;
                 border-bottom: 0;
-                color: $text-color;
+                color: $text-color-light;
                 background-color: $light-background;
             }
         }
     }
 }
+
 .spinner-grow {
     --bs-spinner-width: 1rem !important;
     --bs-spinner-height: 1rem !important;
     --bs-spinner-animation-speed: 1s !important;
     margin-right: 12px !important;
+}
+
+[data-bs-theme='dark'] {
+    div {
+        &.nav-item {
+            a {
+                &.nav-link {
+                    color: $text-color-dark;
+
+                    &.active {
+                        background-color: $dark-background;
+                        color: $text-color-dark;
+                        border: 1px solid $border-color-dark;
+                    }
+                }
+            }
+        }
+
+        &.tab-content {
+            border: 1px solid $border-color-dark;
+        }
+
+        &.list-group {
+            border: 1px solid $border-color-dark;
+
+            div.list-group-item {
+
+                &.active,
+                &:hover {
+                    color: $text-color-dark;
+                    background-color: $dark-background;
+                }
+            }
+        }
+    }
 }
