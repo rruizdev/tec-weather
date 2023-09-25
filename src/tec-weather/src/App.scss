@@ -1,0 +1,10 @@
+div.app {
+    position: relative;
+    height: calc(100vh - 56px);
+    overflow: auto;
+    width: 100%;
+}
+
+body {
+    overflow: hidden;
+}
