@@ -1,16 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Moon, Sun } from 'react-bootstrap-icons';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import './Header.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleDarkMode } from '../../reducers/ThemeReducer';
 
 export default function Header() {
-    const [darkMode, setDarkMode] = useState(false);
+    const dispatch = useDispatch();
+    const darkMode = useSelector(state => state.darkMode);
 
-    const toggleDarkMode = (event) => {
-        event.preventDefault();
-        setDarkMode(!darkMode);
+    const handleToggle = () => {
+        dispatch(toggleDarkMode());
     }
 
     useEffect(() => {
@@ -29,7 +31,7 @@ export default function Header() {
                         <Nav.Link href={'/locations'}>Localidades</Nav.Link>
                     </Nav>
                     <Nav className={'ms-auto'}>
-                        <Nav.Link className='icon' href={''} onClick={toggleDarkMode}>
+                        <Nav.Link className='icon' href={''} onClick={handleToggle}>
                             {darkMode ? <Sun /> : <Moon />}
                         </Nav.Link>
                     </Nav>

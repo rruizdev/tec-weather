@@ -6,6 +6,9 @@ import Location from './components/location/Location';
 import Header from './components/header/Header';
 import Container from 'react-bootstrap/esm/Container';
 import './App.scss'
+import { Provider } from 'react-redux';
+import store, { persistor } from './Stores/Store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 export default function App() {
   const [latitude, setLatitude] = useState(0);
@@ -20,20 +23,22 @@ export default function App() {
   }, []);
 
   return (
-    <>
-      <Header />
-      <div className='app'>
-        <Container>
-          <Routes>
-            <Route>
-              <Route path={'today'} element={<Today latitude={latitude} longitude={longitude} />} />
-              <Route path={'extended'} element={<Extended latitude={latitude} longitude={longitude} />} />
-              <Route path={'locations'} element={<Location />} />
-              <Route path={'*'} element={<Navigate to={'/today'} />} />
-            </Route>
-          </Routes>
-        </Container>
-      </div>
-    </>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <Header />
+        <div className='app'>
+          <Container>
+            <Routes>
+              <Route>
+                <Route path={'today'} element={<Today latitude={latitude} longitude={longitude} />} />
+                <Route path={'extended'} element={<Extended latitude={latitude} longitude={longitude} />} />
+                <Route path={'locations'} element={<Location />} />
+                <Route path={'*'} element={<Navigate to={'/today'} />} />
+              </Route>
+            </Routes>
+          </Container>
+        </div>
+      </PersistGate>
+    </Provider>
   );
 };
