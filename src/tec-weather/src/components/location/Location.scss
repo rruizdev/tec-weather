@@ -16,6 +16,8 @@ div {
                 text-overflow: ellipsis;
                 max-width: 100%;
                 margin-right: -72px;
+                border: 1px solid $light-background;
+                margin-bottom: 8px;
 
                 &.active {
                     background-color: $light-background;
@@ -75,6 +77,7 @@ div {
             a {
                 &.nav-link {
                     color: $text-color-dark;
+                    border: 1px solid $dark-background;
 
                     &.active {
                         background-color: $dark-background;

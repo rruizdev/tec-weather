@@ -85,14 +85,17 @@ export default function Location() {
                                 </LocationItem>)}
                         </Nav>
                     </Col>
-                    <Col className={'p-3'} xs={12} lg={8}>
-                        {
-                            memoizedTabs?.length ?
-                                <Tab.Content>
-                                    {memoizedTabs?.map((tab, i) => <LocationTab tab={tab} i={i} />)}
-                                </Tab.Content> : <></>
-                        }
-                    </Col>
+                    {
+                        memoizedIndex ? 
+                            <Col className={'p-3'} xs={12} lg={8}>
+                            {
+                                memoizedTabs?.length ?
+                                    <Tab.Content>
+                                        {memoizedTabs?.map((tab, i) => <LocationTab tab={tab} i={i} />)}
+                                    </Tab.Content> : <></>
+                            }
+                            </Col> : <></>
+                    }
                 </Row>
             </Tab.Container>
         </Container>
